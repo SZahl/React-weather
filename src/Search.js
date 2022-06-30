@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+import axios from "axios";
+
+export default function Search() {
+  let [city, setCity] = useState(null);
+  let [text, setText] = useState("");
+
+  function handleResponse(response) {
+    return setText(
+      <ul>
+        <li> Temperature: {Math.round(response.data.main.temp)}°C </li>
+        <li>Description: {response.data.weather[0].main} </li>
+        <li>Humidity: {response.data.main.humidity}%</li>
+        <li>Wind: {Math.round(response.data.wind.speed)}km/h</li>
+        <li>
+          <img
+            src={`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`}
+            alt={response.data.weather[0].main}
+          />{" "}
+        </li>
+      </ul>
+    );
+  }
+
+  function updateSearch(event) {
+    setCity(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=95fd2bb0e975bc28910a455e37356508&units=metric`;
+    axios.get(url).then(handleResponse);
+    console.log(url);
+  }
+
+  return (
+    <div className="Search">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          onChange={updateSearch}
+          placeholder="Search for a city"
+        />
+        <input type="submit" value="Search" />
+      </form>
+      <h2>{text}</h2>
+    </div>
+  );
+}
