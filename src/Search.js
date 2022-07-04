@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./Search.css";
 
@@ -7,27 +8,37 @@ export default function Search() {
   let [text, setText] = useState("");
 
   function handleResponse(response) {
+    let date = new Date(response.data.dt * 1000);
     return setText(
       <div className="Show-weather">
         <div className="Container">
           <div class="row">
             <div class="col-6">
               <ul>
-                <li> Temperature: {Math.round(response.data.main.temp)}°C </li>
+                <li>
+                  <div className="City">{response.data.name}</div>
+                </li>
                 <li>
                   <img
                     src={`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`}
                     alt={response.data.weather[0].main}
-                  />{" "}
+                  />
+                  <span className="temp">
+                    {Math.round(response.data.main.temp)}
+                  </span>
+                  °C
                 </li>
               </ul>
             </div>
 
-            <div class="col-4">
+            <div class="col-6">
               <ul>
-                <li>Description: {response.data.weather[0].main} </li>
-                <li>Humidity: {response.data.main.humidity}%</li>
-                <li>Wind: {Math.round(response.data.wind.speed)}km/h</li>
+                <li>
+                  <FormattedDate date={date} />
+                </li>
+                <li>{response.data.weather[0].main} </li>
+                <li>Humidity - {response.data.main.humidity}%</li>
+                <li>Wind - {Math.round(response.data.wind.speed)}km/h</li>
               </ul>
             </div>
           </div>

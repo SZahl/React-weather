@@ -1,6 +1,15 @@
+img {
+  width: 150px;
+}
+
+.City {
+  font-size: 45px;
+}
+
 .Show-weather {
   text-align: center;
-  padding: 60px;
+  margin-top: 40px;
+  padding: 40px;
 }
 
 .Show-weather li {
@@ -8,5 +17,11 @@
 }
 
 .Search {
-  padding: 40px;
+  margin: 60px;
+}
+
+.temp {
+  font-size: 60px;
+  position: relative;
+  top: 20px;
 }

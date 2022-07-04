@@ -1,9 +1,40 @@
-.App {
-  text-align: center;
-
-  padding: 50px;
+body {
+  background-image: url("./Wallpaper.jpg");
+  background-size: cover;
 }
 
-.App h1 {
+h1 {
+  background-color: white;
+  border-radius: 15px;
+  opacity: 0.6;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  display: inline;
+  padding: 10px;
   margin: 25px;
+}
+
+.App {
+  text-align: center;
+  padding: 40px;
+  margin: 20px;
+}
+
+.Show-weather {
+  background-color: white;
+  border-radius: 15px;
+  opacity: 0.6;
+  max-width: 900px;
+  margin: auto;
+}
+
+.Footer {
+  background: white;
+  padding: 10px;
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+  border-radius: 15px;
+  opacity: 0.7;
 }
