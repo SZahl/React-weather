@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FormattedDate from "./FormattedDate";
+import Temperature from "./Temperature";
 import axios from "axios";
 import "./Search.css";
 
@@ -9,6 +10,7 @@ export default function Search() {
 
   function handleResponse(response) {
     let date = new Date(response.data.dt * 1000);
+
     return setText(
       <div className="Show-weather">
         <div className="Container">
@@ -23,10 +25,7 @@ export default function Search() {
                     src={`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`}
                     alt={response.data.weather[0].main}
                   />
-                  <span className="temp">
-                    {Math.round(response.data.main.temp)}
-                  </span>
-                  °C
+                  <Temperature celsius={response.data.main.temp} />
                 </li>
               </ul>
             </div>
@@ -55,7 +54,6 @@ export default function Search() {
     event.preventDefault();
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=95fd2bb0e975bc28910a455e37356508&units=metric`;
     axios.get(url).then(handleResponse);
-    console.log(url);
   }
 
   return (
