@@ -1,0 +1,9 @@
+
+.WeatherForecastDays {
+  font-size: 20px;
+  margin: 15px;
+}
+
+.WeatherForecast-temperature-min {
+    opacity: 0.6;
+}

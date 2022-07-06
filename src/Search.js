@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormattedDate from "./FormattedDate";
 import Temperature from "./Temperature";
+import WeatherForecastDays from "./WeatherForecastDays";
 import axios from "axios";
 import "./Search.css";
 
@@ -22,6 +23,7 @@ export default function Search() {
                 </li>
                 <li>
                   <img
+                    className="Main-icon"
                     src={`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`}
                     alt={response.data.weather[0].main}
                   />
@@ -42,6 +44,7 @@ export default function Search() {
             </div>
           </div>
         </div>
+        <WeatherForecastDays data={response.data} />
       </div>
     );
   }
@@ -52,7 +55,8 @@ export default function Search() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=95fd2bb0e975bc28910a455e37356508&units=metric`;
+    let apiKey = "95fd2bb0e975bc28910a455e37356508";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
 
