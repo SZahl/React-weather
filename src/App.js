@@ -9,7 +9,7 @@ export default function App() {
       <Search />
       <div className="Footer">
         Open source coded by Zahl, hosted on{" "}
-        <a href="https://github.com/SZahl/React-weather-app">Github</a>
+        <a href="https://github.com/SZahl/React-weather">Github</a>
       </div>
     </div>
   );
